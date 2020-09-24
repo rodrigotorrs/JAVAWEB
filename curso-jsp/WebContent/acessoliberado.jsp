@@ -6,18 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<form action="LoginServlet" method="post">
-		Login:
-		<input type ="text" id="login" name="login">
-		<br/>
-		Senha:
-		<input type ="text" id="senha" name="senha">	
-		<br/>
-		<input type ="submit" value = "logar" >
-	</form>
-	
-
-	
+<h3>Seja bem vindo ao sistema em JSP</h3>
 </body>
 </html>
