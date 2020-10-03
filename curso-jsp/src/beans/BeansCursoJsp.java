@@ -1,21 +1,20 @@
 package beans;
 
 public class BeansCursoJsp {
+
+	private Long id;
 	
 	private String login;
-	
+
 	private String senha;
 
-	public boolean validarLoginSenha(String login, String senha) {
-		
-		if (login.equalsIgnoreCase("admin") && senha.equalsIgnoreCase("admin")) {
-			return true;
-		}else {
-			return false;			
-		}
-		
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
+	public Long getId() {
+		return id;
+	}
 	
 	public String getLogin() {
 		return login;
@@ -33,6 +32,4 @@ public class BeansCursoJsp {
 		this.senha = senha;
 	}
 
-	
-	
 }
