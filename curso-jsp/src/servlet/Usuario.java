@@ -1,4 +1,4 @@
-package servlet;
+ package servlet;
 
 import java.io.IOException;
 
@@ -63,11 +63,16 @@ public class Usuario extends HttpServlet {
 		
 
 		BeansCursoJsp usuario = new BeansCursoJsp();
-		usuario.setId(Long.parseLong(id));
+		
+		usuario.setId(id != null && !id.isEmpty() ? Long.parseLong(id) : 0);
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
-
-		daoUsuario.salvar(usuario);
+		
+		if (id == null || id.isEmpty()) {
+			daoUsuario.salvar(usuario);
+		}else{
+			daoUsuario.atualizar(usuario);
+		}
 
 		
 		//PARA FICAR NA MESMA PAGINA APÓS CADASTRO DO USUARIO.
