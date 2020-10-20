@@ -8,39 +8,52 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Cadastro de usuario</title>
+<link rel="stylesheet" href="resources/css/cadastro.css">
 </head>
 <body>
-	<h1>Cadastro de usuário</h1>
+	<center>
+		<h1>Cadastro de usuário</h1>
+	</center>
 
-	<form action="salvarUsuario" method="post">
-		<table>
-			<tr>
-				<td>Código:</td>
-				<td><input type="text" readonly="readonly" id="id" name="id"
-					value="${user.id}"></td>
+	<center>
+		<form action="salvarUsuario" method="post">
+			<ul class="form-style-1">
+				<li>
 
-			</tr>
+					<table>
+						<tr>
+							<td>Código:</td>
+							<td><input type="text" readonly="readonly" id="id" name="id"
+								value="${user.id}" class="field-select"></td>
 
-			<tr>
-				<td>Login:</td>
-				<td><input type="text" id="login" name="login"
-					value="${user.login}"></td>
+						</tr>
 
-			</tr>
+						<tr>
+							<td>Login:</td>
+							<td><input type="text" id="login" name="login"
+								value="${user.login}"></td>
 
-			<tr>
-				<td>Senha:</td>
-				<td><input type="password" id="senha" name="senha"
-					value="${user.senha}"></td>
+						</tr>
 
-			</tr>
+						<tr>
+							<td>Senha:</td>
+							<td><input type="password" id="senha" name="senha"
+								value="${user.senha}"></td>
+
+						</tr>
+						<tr>
+							<td></td>
+							<td><input type="submit" value="Salvar"></td>
+						</tr>
 
 
-		</table>
+					</table>
 
-		<input type="submit" value="Salvar">
 
-	</form>
+				</li>
+			</ul>
+		</form>
+	</center>
 
 	<table>
 		<c:forEach items="${usuarios}" var="user">
