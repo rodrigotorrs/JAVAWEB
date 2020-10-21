@@ -14,7 +14,7 @@ public class Execult {
 				
 		l2.abrir();
 		l2.folhear(135);
-		l2.voltarPag();
+		l2.avancarPag();
 		
 		System.out.println(l2.detalhes());
 		
