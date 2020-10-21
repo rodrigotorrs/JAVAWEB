@@ -1,4 +1,4 @@
- package servlet;
+package servlet;
 
 import java.io.IOException;
 
@@ -25,69 +25,87 @@ public class Usuario extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-	
+
 		try {
-				
-		String acao = request.getParameter("acao");
-		String user = request.getParameter("user");
-		
-		if (acao.equalsIgnoreCase("delete")) {
-			daoUsuario.delete(user);
-			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
-			request.setAttribute("usuarios", daoUsuario.listar());
-			view.forward(request, response);
-		}else if(acao.equalsIgnoreCase("editar")) {
-			
-			BeansCursoJsp beansCursoJsp = daoUsuario.consultar(user);
-			
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
-			request.setAttribute("user",beansCursoJsp);
-			view.forward(request, response);
-			
-		}
-	
+
+			String acao = request.getParameter("acao");
+			String user = request.getParameter("user");
+
+			if (acao.equalsIgnoreCase("delete")) {
+				daoUsuario.delete(user);
+
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				request.setAttribute("usuarios", daoUsuario.listar());
+				view.forward(request, response);
+			} else if (acao.equalsIgnoreCase("editar")) {
+
+				BeansCursoJsp beansCursoJsp = daoUsuario.consultar(user);
+
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				request.setAttribute("user", beansCursoJsp);
+				view.forward(request, response);
+
+			} else if (acao.equalsIgnoreCase("listartodos")) {
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				request.setAttribute("usuarios", daoUsuario.listar());
+				view.forward(request, response);
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		doGet(request, response);
-		
-		String id = request.getParameter("id");
-		String login = request.getParameter("login");
-		String senha = request.getParameter("senha");
-		
 
-		BeansCursoJsp usuario = new BeansCursoJsp();
-		
-		usuario.setId(id != null && !id.isEmpty() ? Long.parseLong(id) : 0);
-		usuario.setLogin(login);
-		usuario.setSenha(senha);
-		
-		if (id == null || id.isEmpty()) {
-			daoUsuario.salvar(usuario);
-		}else{
-			daoUsuario.atualizar(usuario);
+		String acao = request.getParameter("acao");
+
+		if (acao != null && acao.equalsIgnoreCase("reset")) {
+
+			try {
+
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				request.setAttribute("usuarios", daoUsuario.listar());
+				view.forward(request, response);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		} else {
+
+			String id = request.getParameter("id");
+			String login = request.getParameter("login");
+			String senha = request.getParameter("senha");
+			String nome = request.getParameter("nome");
+
+			BeansCursoJsp usuario = new BeansCursoJsp();
+
+			usuario.setId(id != null && !id.isEmpty() ? Long.parseLong(id) : 0);
+			usuario.setLogin(login);
+			usuario.setSenha(senha);
+			usuario.setNome(nome);
+
+			try {
+				if (id == null || id.isEmpty() && daoUsuario.validarLogin(login)) {
+					daoUsuario.salvar(usuario);
+				} else if(id != null && !id.isEmpty()){
+					daoUsuario.atualizar(usuario);
+				}
+
+				// PARA FICAR NA MESMA PAGINA APÓS CADASTRO DO USUARIO.
+
+				RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
+				request.setAttribute("usuarios", daoUsuario.listar());
+				view.forward(request, response);
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-
-		
-		//PARA FICAR NA MESMA PAGINA APÓS CADASTRO DO USUARIO.
-		
-		
-		try {
-
-			RequestDispatcher view = request.getRequestDispatcher("/cadastroUsuario.jsp");
-			request.setAttribute("usuarios", daoUsuario.listar());
-			view.forward(request, response);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 	}
 
 }
