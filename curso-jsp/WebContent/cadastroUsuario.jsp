@@ -65,7 +65,7 @@
 				<td><c:out value="${user.senha}"></c:out></td>
 
 				<td><a href="salvarUsuario?acao=delete&user=${user.login}"><img src="resources/img/excluir.png" width="20px" height="20px"></a></td>
-				<td><a href="salvarUsuario?acao=editar&user=${user.login}"><img src="resources/img/editar.png" width="20px" height="20px"></a></a></td>
+				<td><a href="salvarUsuario?acao=editar&user=${user.login}"><img src="resources/img/editar.png" width="20px" height="20px"></a></td>
 
 			</tr>
 
