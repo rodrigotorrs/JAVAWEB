@@ -9,6 +9,16 @@ public class BeansCursoJsp {
 	private String senha;
 
 	private String nome;
+	
+	private String fone;
+	
+	public void setFone(String fone) {
+		this.fone = fone;
+	}
+	
+	public String getFone() {
+		return fone;
+	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
