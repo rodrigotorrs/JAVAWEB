@@ -13,7 +13,7 @@
 <body>
 	<center>
 		<h1>Cadastro de usuário</h1>
-		<h3 style="color: olive;">${msg}</h3>
+		<h3 style="color:red;">${msg}</h3>
 	</center>
 
 	<center>
