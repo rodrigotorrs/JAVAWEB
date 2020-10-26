@@ -12,7 +12,7 @@
 </head>
 <body>
 	<center>
-		<h1>Cadastro de usuário</h1>
+		<h1>Cadastro de usuario</h1>
 		<h3 style="color:red;">${msg}</h3>
 	</center>
 
@@ -23,7 +23,7 @@
 
 					<table>
 						<tr>
-							<td>Código:</td>
+							<td>Codigo:</td>
 							<td><input type="text" readonly="readonly" id="id" name="id"
 								value="${user.id}" class="field-select"></td>
 
@@ -75,7 +75,7 @@
 
 	<div class="container">
 		<table class="responsive-table">
-			<caption>Usuários cadastrados</caption>
+			<caption>Usuarios cadastrados</caption>
 			<tr>
 				<th>Id</th>
 				<th>Login</th>

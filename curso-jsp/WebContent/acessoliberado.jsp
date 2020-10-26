@@ -9,5 +9,7 @@
 <h3>Seja bem vindo ao sistema em JSP</h3>
 
 <a href="salvarUsuario?acao=listartodos"><img src="resources/img/cadastro.png" width="100px" height="100px"></a>
+<a href="salvarProduto?acao=listartodos"><img src="resources/img/produto.png" width="100px" height="100px"></a>
+
 </body>
 </html>
