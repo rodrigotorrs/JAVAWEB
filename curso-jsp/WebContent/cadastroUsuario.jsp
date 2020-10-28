@@ -11,13 +11,16 @@
 <link rel="stylesheet" href="resources/css/cadastro.css">
 </head>
 <body>
+<a href="acessoliberado.jsp">Inicio</a>
+<a href="index.jsp">Sair</a>
 	<center>
 		<h1>Cadastro de usuario</h1>
-		<h3 style="color:red;">${msg}</h3>
+		<h3 style="color: red;">${msg}</h3>
 	</center>
 
 	<center>
-		<form action="salvarUsuario" method="post" id="formUser">
+		<form action="salvarUsuario" method="post" id="formUser"
+			onsubmit="return validarCampos()?true : false;">
 			<ul class="form-style-1">
 				<li>
 
@@ -103,6 +106,29 @@
 
 		</table>
 	</div>
+	<script type="text/javascript">
+		function validarCampos() {
+			if (document.getElementById("login").value == '') {
+				alert('Informe o Login');
+				return false;
+			} else
 
+			if (document.getElementById("senha").value == '') {
+				alert('Informe o Senha');
+				return false;
+			} else
+
+			if (document.getElementById("nome").value == '') {
+				alert('Informe o Nome');
+				return false;
+			} else
+
+			if (document.getElementById("fone").value == '') {
+				alert('Informe o Telefone');
+				return false;
+			}
+			return true;
+		}
+	</script>
 </body>
 </html>
